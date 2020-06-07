@@ -5,11 +5,14 @@ const {
     notebookMiddlewares: {
         isNotebookModelValid
     },
-    isTitleExist
+    isTitleExist,
+    isTitleExistForDelete
 } = require('../../middlewares');
 
 const notebookRouter = Router();
 
 notebookRouter.post('/', isNotebookModelValid, isTitleExist, notebookController.createNotebookModel);
+notebookRouter.get('/delete', isTitleExistForDelete, notebookController.deleteNotebookModel);
+
 
 module.exports = notebookRouter;

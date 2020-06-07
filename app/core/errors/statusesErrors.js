@@ -7,6 +7,7 @@ const {
         NOT_TOKEN,
         USER_NOT_FOUND,
         WRONG_ID,
+        NOT_TITLE
     }
 } = require('../constants');
 
@@ -20,6 +21,11 @@ module.exports = {
     TITLE_ALREADY_EXIST: {
         message: TITLE_ALREADY_EXIST,
         code: 4002
+    },
+
+    NOT_TITLE: {
+        message: NOT_TITLE,
+        code: 4001
     },
 
     NOT_TOKEN: {

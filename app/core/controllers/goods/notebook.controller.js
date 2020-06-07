@@ -4,16 +4,28 @@ const {statusesCode} = require('../../constants');
 
 
 module.exports = {
-    createNotebookModel: (req, res, next) => {
+    createNotebookModel: async (req, res, next) => {
         try {
             let notebookModel = req.body;
 
-            notebookService.setNotebookModel(notebookModel);
+            await notebookService.setNotebookModel(notebookModel);
 
             res.sendStatus(statusesCode.OK);
         } catch (e) {
             next(e);
         }
     },
+
+    deleteNotebookModel: async (req, res, next) => {
+        try {
+            let {title} = req.query;
+
+            await notebookService.deleteNotebookModel(title);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e);
+        }
+    }
 
 };

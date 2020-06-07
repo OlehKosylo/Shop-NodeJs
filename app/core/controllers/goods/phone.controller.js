@@ -4,11 +4,23 @@ const {statusesCode} = require('../../constants');
 
 
 module.exports = {
-    createPhoneModel: (req, res, next) => {
+    createPhoneModel: async (req, res, next) => {
         try {
             let phoneModel = req.body;
 
-            phonesService.setModelPhone(phoneModel);
+            await phonesService.setModelPhone(phoneModel);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    deletePhoneModel: async (req, res, next) => {
+        try {
+            let {title} = req.query;
+
+            await phonesService.deleteModelPhone(title);
 
             res.sendStatus(statusesCode.OK);
         } catch (e) {

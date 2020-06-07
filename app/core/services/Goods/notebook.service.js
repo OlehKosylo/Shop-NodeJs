@@ -8,4 +8,11 @@ module.exports = {
         await NotebookModel.create(notebookModel);
     },
 
+    deleteNotebookModel: async (title) => {
+        const NotebookModel = db.getModel(NOTEBOOKS);
+
+        await NotebookModel.destroy({
+            where: {title}
+        });
+    },
 };

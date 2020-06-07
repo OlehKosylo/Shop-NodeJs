@@ -5,11 +5,13 @@ const {
     TVMiddlewares: {
         isTVModelValid
     },
-    isTitleExist
+    isTitleExist,
+    isTitleExistForDelete
 } = require('../../middlewares');
 
-const phoneRouter = Router();
+const TVRouter = Router();
 
-phoneRouter.post('/', isTVModelValid, isTitleExist, TVController.createTVModel);
+TVRouter.post('/', isTVModelValid, isTitleExist, TVController.createTVModel);
+TVRouter.get('/delete', isTitleExistForDelete, TVController.deleteTVModel);
 
-module.exports = phoneRouter;
+module.exports = TVRouter;

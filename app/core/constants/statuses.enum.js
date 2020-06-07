@@ -9,5 +9,6 @@ module.exports = {
     WRONG_ID:'Wrong ID',
 
     TITLE_ALREADY_EXIST: 'Title already exist',
+    NOT_TITLE: 'Title not found'
 };
 

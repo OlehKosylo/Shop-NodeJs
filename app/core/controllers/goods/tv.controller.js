@@ -4,16 +4,28 @@ const {statusesCode} = require('../../constants');
 
 
 module.exports = {
-    createTVModel: (req, res, next) => {
+    createTVModel: async (req, res, next) => {
         try {
             let TVModel = req.body;
 
-            TVService.setTVModel(TVModel);
+            await TVService.setTVModel(TVModel);
 
             res.sendStatus(statusesCode.OK);
         } catch (e) {
             next(e);
         }
     },
+
+    deleteTVModel: async (req, res, next) => {
+        try {
+            let {title} = req.query;
+
+            await TVService.deleteTVModel(title);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e);
+        }
+    }
 
 };
