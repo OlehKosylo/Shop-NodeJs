@@ -2,7 +2,7 @@ const db = require('../../dataBase').getInstance();
 const {modelNames: {ACTION_TOKENS, USER}} = require('../../constants');
 
 module.exports = {
-    getUserByEmail: async (email) => {
+    getUserByEmail: (email) => {
         const UserModel = db.getModel(USER);
 
         return UserModel.findOne({
@@ -10,14 +10,14 @@ module.exports = {
         })
     },
 
-    getUserByToken: async (token) => {
+    getUserByToken: (token) => {
         const UserModel = db.getModel(ACTION_TOKENS);
         return UserModel.findOne({
             where: {token}
         })
     },
 
-    getUserById: async (id) => {
+    getUserById: (id) => {
         const UserModel = db.getModel(USER);
         return UserModel.findOne({
             where: {id}

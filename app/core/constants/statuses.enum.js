@@ -7,5 +7,7 @@ module.exports = {
 
     USER_NOT_FOUND: 'User not found',
     WRONG_ID:'Wrong ID',
+
+    TITLE_ALREADY_EXIST: 'Title already exist',
 };
 

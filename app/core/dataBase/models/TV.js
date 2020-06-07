@@ -1,8 +1,8 @@
-const {modelNames: {USER}} = require('../../constants');
+const {modelNames: {TV}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
-    return sequelize.define(USER, {
+    return sequelize.define(TV, {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
@@ -10,35 +10,48 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             },
 
-            email: {
+            title: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
             },
 
-            password: {
+            description: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
 
-            age: {
+            price: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
 
-            name: {
+            imageURL: {
+                type: DataTypes.STRING
+            },
+
+            screen_diagonal: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+
+            smart_tv_support: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+
+            smart_platform: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
 
-            surname: {
-                type: DataTypes.STRING,
+            hdr: {
+                type: DataTypes.INTEGER,
                 allowNull: false
             },
-
         },
         {
-            tableName: USER,
+            tableName: TV,
             timestamps: false
         });
 };

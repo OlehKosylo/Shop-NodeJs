@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 
         },
         {
-            tableName: 'actiontokens',
+            tableName: ACTION_TOKENS,
             timestamps: false
         });
 

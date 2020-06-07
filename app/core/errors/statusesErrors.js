@@ -1,6 +1,7 @@
 const {
     statuses: {
         EMAIL_ALREADY_EXIST,
+        TITLE_ALREADY_EXIST,
         WRONG_EMAIL,
         NOT_VALID_TOKEN,
         NOT_TOKEN,
@@ -13,6 +14,11 @@ module.exports = {
     // BAD REQUEST
     EMAIL_ALREADY_EXIST: {
         message: EMAIL_ALREADY_EXIST,
+        code: 4002
+    },
+
+    TITLE_ALREADY_EXIST: {
+        message: TITLE_ALREADY_EXIST,
         code: 4002
     },
 

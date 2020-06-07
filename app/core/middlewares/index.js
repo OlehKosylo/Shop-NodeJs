@@ -3,3 +3,7 @@ module.exports.isActionTokenExist = require('./auth/isActionTokenExist.middlewar
 module.exports.loginProcess = require('./auth/login');
 module.exports.isEmailExistRecover = require('./auth/isEmailExist.middleware');
 module.exports.isRecoverTokenExist = require('./auth/recoverPassword/isRecoverTokenExist.middleware');
+module.exports.isTitleExist = require('./goods/common/isTitleExist.middleware');
+module.exports.phoneMiddlewares = require('./goods/phones');
+module.exports.notebookMiddlewares = require('./goods/notebooks');
+module.exports.TVMiddlewares = require('./goods/tv');

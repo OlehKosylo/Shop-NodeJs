@@ -24,9 +24,11 @@ app.use(require('body-parser').urlencoded({
     extended: true,
 }));
 
-const {authRouter} = require('./core/routers');
+const {authRouter, phoneRouter, notebookRouter, TVRouter} = require('./core/routers');
 app.use('/auth', authRouter);
-
+app.use('/phones', phoneRouter);
+app.use('/notebooks', notebookRouter);
+app.use('/tv', TVRouter);
 
 app.use('*', (err, req, res, next) => {
     let message = err.message;

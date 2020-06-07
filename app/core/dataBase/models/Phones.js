@@ -1,8 +1,8 @@
-const {modelNames: {USER}} = require('../../constants');
+const {modelNames: {PHONES}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
-    return sequelize.define(USER, {
+    return sequelize.define(PHONES, {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
@@ -10,35 +10,49 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             },
 
-            email: {
+            title: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
             },
 
-            password: {
+            description: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
 
-            age: {
+            price: {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
 
-            name: {
-                type: DataTypes.STRING,
+            imageURL: {
+                type: DataTypes.STRING
+            },
+
+            screen_diagonal: {
+                type: DataTypes.INTEGER,
                 allowNull: false
             },
 
-            surname: {
-                type: DataTypes.STRING,
+            camera_mp: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+
+            number_of_cores: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+
+            inner_memory: {
+                type: DataTypes.INTEGER,
                 allowNull: false
             },
 
         },
         {
-            tableName: USER,
+            tableName: PHONES,
             timestamps: false
         });
 };
