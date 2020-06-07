@@ -4,3 +4,5 @@ module.exports.checkHashPassword = require('./checkHashPassword');
 module.exports.jwtTokenGenerator = require('./jwtTokenGenerator');
 module.exports.jwtTokenVerificator = require('./jwtTokenVerificator');
 module.exports.jwtRefreshTokenVerificator = require('./jwtRefreshTokenVerificator');
+module.exports.jwtTokenForRecoverPassword = require('./jwtTokenGeneratorForRecoverPassword');
+

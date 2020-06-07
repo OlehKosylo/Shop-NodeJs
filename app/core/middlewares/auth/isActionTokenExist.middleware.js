@@ -1,11 +1,11 @@
-const {userService} = require('../../../services');
+const {userService} = require('../../services');
 const {
     ErrorHandler,
     statusesErrors: {NOT_TOKEN, USER_NOT_FOUND}
-} = require('../../../errors');
+} = require('../../errors');
 const {
     statusesCode: {BAD_REQUEST, NOT_FOUND},
-} = require('../../../constants');
+} = require('../../constants');
 
 module.exports = async (req, res, next) => {
     const token = req.params.token;

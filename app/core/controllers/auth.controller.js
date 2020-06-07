@@ -1,5 +1,6 @@
 const {authService, userService} = require('../services');
-const {authHelper: { hashPassword, uuidToken,jwtTokenGenerator} , emailSender} = require('../helpers');
+const {authHelper: {hashPassword, uuidToken, jwtTokenGenerator, jwtTokenForRecoverPassword},
+    emailSender} = require('../helpers');
 const {statusesCode, jwtSecretWords: {AUTHORIZATION}} = require('../constants');
 
 
@@ -46,24 +47,58 @@ module.exports = {
     },
 
     logout: async (req, res, next) => {
-        const access_token = req.get(AUTHORIZATION);
-        await authService.deleteTokenByParams({access_token});
+        try {
+            const access_token = req.get(AUTHORIZATION);
+            await authService.deleteTokenByParams({access_token});
 
-        res.sendStatus(200);
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e)
+        }
     },
 
     refresh: async (req, res, next) => {
-            try {
-                // Must be transaction
-                const refresh_token = req.get(AUTHORIZATION);
-                await authService.deleteTokenByParams({refresh_token});
+        try {
+            // Must be transaction
+            const refresh_token = req.get(AUTHORIZATION);
+            await authService.deleteTokenByParams({refresh_token});
 
-                const jwtTokens = jwtTokenGenerator();
-                await authService.createTokenPair({...jwtTokens, userId: req.user_id});
-                //
-                res.json(jwtTokens);
-            } catch (e) {
-                next(e)
-            }
-        },
-    };
+            const jwtTokens = jwtTokenGenerator();
+            await authService.createTokenPair({...jwtTokens, userId: req.user_id});
+            //
+            res.json(jwtTokens);
+        } catch (e) {
+            next(e)
+        }
+    },
+
+    recoverPassword: async (req, res, next) => {
+        try {
+            let user = req.user;
+
+            let {token} = await jwtTokenForRecoverPassword();
+
+            await emailSender(user.email, 'Recover password in your account', token);
+
+            await authService.setTokenForRecoverPassword(user, token);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    recoverPasswordSetNew: async (req, res, next) => {
+        try {
+            let user_id = req.user_id;
+
+            let password = await hashPassword(req.body.password);
+
+            await userService.resetPassword(user_id, password);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e);
+        }
+    }
+};

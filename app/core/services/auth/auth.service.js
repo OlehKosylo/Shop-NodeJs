@@ -1,5 +1,5 @@
 const db = require('../../dataBase').getInstance();
-const {modelNames: {USER , ACTION_TOKENS, JWT_TOKEN}} = require('../../constants');
+const {modelNames: {USER, ACTION_TOKENS, JWT_TOKEN}} = require('../../constants');
 
 module.exports = {
     registrationUser: async (user, token) => {
@@ -19,6 +19,14 @@ module.exports = {
         })
     },
 
+    getActionTokensByParams: (params) => {
+        const TokenModel = db.getModel(ACTION_TOKENS);
+
+        return TokenModel.findOne({
+            where: params
+        })
+    },
+
     deleteTokenByParams: (params) => {
         const TokenModel = db.getModel(JWT_TOKEN);
 
@@ -32,4 +40,14 @@ module.exports = {
 
         return TokenModel.create(token);
     },
+
+    setTokenForRecoverPassword: async (user, token) => {
+        const ActionTokens = db.getModel(ACTION_TOKENS);
+
+        await ActionTokens.create({action_id: 2, user_id: user.id, token});
+    },
+
+
+
+
 };

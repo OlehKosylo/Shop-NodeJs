@@ -25,6 +25,11 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             },
 
+            createAt: {
+                type: DataTypes.STRING,
+                defaultValue: sequelize.fn('now')
+            }
+
         },
         {
             tableName: 'actiontokens',

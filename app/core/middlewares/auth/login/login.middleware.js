@@ -30,8 +30,11 @@ module.exports = async (req, res, next) => {
         return next(new ErrorHandler(USER_NOT_FOUND.message, NOT_FOUND, USER_NOT_FOUND.code))
     }
 
+    const isPasswordsEquals = await checkHashPassword(user.password, password);
 
-    await checkHashPassword(user.password, password);
+    if (!isPasswordsEquals) {
+        return next (new ErrorHandler(USER_NOT_FOUND.message, NOT_FOUND, USER_NOT_FOUND.code));
+    }
 
     req.user = user;
 
