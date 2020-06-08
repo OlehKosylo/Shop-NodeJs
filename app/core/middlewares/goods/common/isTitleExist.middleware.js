@@ -8,8 +8,7 @@ const {
 } = require('../../../constants');
 
 module.exports = async (req, res, next) => {
-    const {title} = req.body;
-    const {type_of_goods} = req.query;
+    const {title, type_of_goods} = req.body;
 
     const good = await commonService.getGoodByTitle(title, type_of_goods);
 

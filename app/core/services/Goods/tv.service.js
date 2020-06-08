@@ -8,11 +8,22 @@ module.exports = {
         await TVModel.create(modelTV);
     },
 
-    deleteTVModel: async (title) => {
+    deleteTVModel: async (id) => {
         const TVModel = db.getModel(TV);
 
         await TVModel.destroy({
-            where: {title}
+            where: {id}
         });
+    },
+
+    updateTVModel: async (model) => {
+        const TVModel = db.getModel(TV);
+
+        const {id} = model;
+
+        await TVModel.update(
+            {...model},
+            {where: {id}}
+        )
     },
 };

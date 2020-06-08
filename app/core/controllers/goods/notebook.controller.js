@@ -18,14 +18,25 @@ module.exports = {
 
     deleteNotebookModel: async (req, res, next) => {
         try {
-            let {title} = req.query;
+            let {id} = req.id;
 
-            await notebookService.deleteNotebookModel(title);
+            await notebookService.deleteNotebookModel(id);
 
             res.sendStatus(statusesCode.OK);
         } catch (e) {
             next(e);
         }
-    }
+    },
 
+    updateNotebookModel: async (req, res, next) => {
+        try {
+            let Notebook = req.body;
+
+            await notebookService.updateNotebookModel(Notebook);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e)
+        }
+    }
 };

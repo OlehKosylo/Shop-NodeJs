@@ -18,13 +18,25 @@ module.exports = {
 
     deleteTVModel: async (req, res, next) => {
         try {
-            let {title} = req.query;
+            let {id} = req.body;
 
-            await TVService.deleteTVModel(title);
+            await TVService.deleteTVModel(id);
 
             res.sendStatus(statusesCode.OK);
         } catch (e) {
             next(e);
+        }
+    },
+
+    updateTVModel: async (req, res, next) => {
+        try {
+            let TVModel = req.body;
+
+            await TVService.updateTVModel(TVModel);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e)
         }
     }
 

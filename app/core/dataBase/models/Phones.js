@@ -50,6 +50,11 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             },
 
+            type_of_goods: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }
+
         },
         {
             tableName: PHONES,

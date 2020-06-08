@@ -6,13 +6,13 @@ const {
         isPhoneModelValid,
     },
     isTitleExist,
-    isTitleExistForDelete
+    idModelExist
 } = require('../../middlewares');
 
 const phoneRouter = Router();
 
 phoneRouter.post('/', isPhoneModelValid, isTitleExist, phoneController.createPhoneModel);
-phoneRouter.get('/delete', isTitleExistForDelete, phoneController.deletePhoneModel);
-
+phoneRouter.delete('/', idModelExist, phoneController.deletePhoneModel);
+phoneRouter.put('/', isPhoneModelValid, idModelExist, phoneController.updatePhoneModel);
 
 module.exports = phoneRouter;

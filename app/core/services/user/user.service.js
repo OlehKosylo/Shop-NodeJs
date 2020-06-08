@@ -12,6 +12,7 @@ module.exports = {
 
     getUserByToken: (token) => {
         const UserModel = db.getModel(ACTION_TOKENS);
+
         return UserModel.findOne({
             where: {token}
         })
@@ -19,9 +20,19 @@ module.exports = {
 
     getUserById: (id) => {
         const UserModel = db.getModel(USER);
-        return UserModel.findOne({
+
+        return  UserModel.findOne({
             where: {id}
-        })
+        });
+    },
+
+    updateUser: (user) => {
+        const UserModel = db.getModel(USER);
+
+        return  UserModel.update(
+            {...user},
+            {where: {id: user.id}}
+        );
     },
 
     setActivateStatus: async (user_id) => {

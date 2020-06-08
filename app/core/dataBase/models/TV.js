@@ -49,6 +49,11 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
+
+            type_of_goods: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }
         },
         {
             tableName: TV,

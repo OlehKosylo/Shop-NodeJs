@@ -8,12 +8,23 @@ module.exports = {
         await PhonesModel.create(modelPhone);
     },
 
-    deleteModelPhone: async (title) => {
+    deleteModelPhone: async (id) => {
         const PhonesModel = db.getModel(PHONES);
 
         await PhonesModel.destroy({
-            where:{title}
+            where:{id}
         })
+    },
+
+    updatePhoneModel: async (model) => {
+        const PhoneModel = db.getModel(PHONES);
+
+        const {id} = model;
+
+        await PhoneModel.update(
+            {...model},
+            {where: {id}}
+        )
     },
 
 };

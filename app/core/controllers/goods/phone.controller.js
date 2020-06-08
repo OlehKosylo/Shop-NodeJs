@@ -18,14 +18,26 @@ module.exports = {
 
     deletePhoneModel: async (req, res, next) => {
         try {
-            let {title} = req.query;
+            let {id} = req.body;
 
-            await phonesService.deleteModelPhone(title);
+            await phonesService.deleteModelPhone(id);
 
             res.sendStatus(statusesCode.OK);
         } catch (e) {
             next(e);
         }
     },
+
+    updatePhoneModel: async (req, res, next) => {
+        try {
+            let PhoneModel = req.body;
+
+            await phonesService.updatePhoneModel(PhoneModel);
+
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e)
+        }
+    }
 
 };
