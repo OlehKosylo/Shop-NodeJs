@@ -7,7 +7,10 @@ const {
         NOT_TOKEN,
         USER_NOT_FOUND,
         WRONG_ID,
-        NOT_TITLE
+        NOT_TITLE,
+        WRONG_STRIPE_REQUEST,
+        ORDER_NOT_FOUND,
+        GOOD_NOT_FOUND
     }
 } = require('../constants');
 
@@ -38,6 +41,10 @@ module.exports = {
         code: 4002
     },
 
+    WRONG_STRIPE_REQUEST: {
+        message: WRONG_STRIPE_REQUEST,
+        code:4002
+    },
 
     // UNAUTHORIZED
     NOT_VALID_TOKEN: {
@@ -54,9 +61,21 @@ module.exports = {
         code: 4041
     },
 
+    ORDER_NOT_FOUND: {
+        message: ORDER_NOT_FOUND,
+        code: 4041
+    },
+
+    GOOD_NOT_FOUND: {
+        message: GOOD_NOT_FOUND,
+        code: 4041
+    },
+
     WRONG_EMAIL: {
         message: WRONG_EMAIL,
         code: 4001
-    }
+    },
+
+
 
 };

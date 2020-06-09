@@ -1,6 +1,7 @@
 const port = process.env.PORT || 3333;
 const bodyParser = require('body-parser');
 const engines = require('consolidate');
+require('dotenv').config();
 
 let express = require('express');
 const app = express();
@@ -24,12 +25,13 @@ app.use(require('body-parser').urlencoded({
     extended: true,
 }));
 
-const {authRouter, phoneRouter, notebookRouter, TVRouter, userRouter} = require('./core/routers');
+const {authRouter, phoneRouter, notebookRouter, TVRouter, userRouter, invoiceRouter} = require('./core/routers');
 app.use('/auth', authRouter);
 app.use('/phones', phoneRouter);
 app.use('/notebooks', notebookRouter);
 app.use('/tv', TVRouter);
 app.use('/user', userRouter);
+app.use('/invoice', invoiceRouter);
 
 app.use('*', (err, req, res, next) => {
     let message = err.message;

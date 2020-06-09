@@ -15,4 +15,4 @@ module.exports.isTitleExist = require('./goods/common/isTitleExist.middleware');
 module.exports.isUserIdExist = require('./user/isUserIdExist.middleware');
 module.exports.isUserModelValid = require('./user/isUserModelValid.middleware');
 
-
+module.exports.stripe = require('./invoces');

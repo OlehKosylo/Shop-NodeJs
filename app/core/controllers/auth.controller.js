@@ -1,6 +1,6 @@
 const {authService, userService} = require('../services');
 const {
-    authHelper: {hashPassword, uuidToken, jwtTokenGenerator, jwtTokenForRecoverPassword},
+    authHelper: {hashPassword, uuidToken, jwtTokenGenerator, jwtTokenForRecoverPassword, checkUserStatus},
     emailSender,
 } = require('../helpers');
 const {
@@ -10,7 +10,7 @@ const {
 } = require('../constants');
 
 module.exports = {
-    registerUser: async (req, res) => {
+    registerUser: async (req, res, next) => {
         try {
             let user = req.body;
 
@@ -20,7 +20,9 @@ module.exports = {
 
             await emailSender(user.email, ACTIVATE_ACCOUNT, token);
 
-            await authService.registrationUser(user, token);
+            const user_status = await checkUserStatus(user.passwordForStatus);
+
+            await authService.registrationUser({...user, user_status}, token);
 
             res.sendStatus(statusesCode.CREATED);
         } catch (e) {
@@ -28,7 +30,7 @@ module.exports = {
         }
     },
 
-    activateAccount: async (req, res) => {
+    activateAccount: async (req, res, next) => {
         try {
             const user_id = req.user_id;
 

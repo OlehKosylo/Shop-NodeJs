@@ -26,4 +26,6 @@ module.exports = {
             {where: {id}}
         )
     },
+
+
 };

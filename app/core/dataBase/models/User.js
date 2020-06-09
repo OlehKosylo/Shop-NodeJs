@@ -36,6 +36,11 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             },
 
+            user_status: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }
+
         },
         {
             tableName: USER,

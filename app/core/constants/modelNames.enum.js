@@ -5,4 +5,5 @@ module.exports = {
     PHONES: 'Phones',
     NOTEBOOKS: 'Notebooks',
     TV:'TV',
+    INVOICES: 'Invoices'
 };

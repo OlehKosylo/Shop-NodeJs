@@ -1,4 +1,5 @@
 module.exports.checkHashPassword = require('./checkHashPassword');
+module.exports.checkUserStatus = require('./checkUserStatus');
 module.exports.hashPassword = require('./hashPassword');
 module.exports.jwtTokenGenerator = require('./jwtTokenGenerator');
 module.exports.jwtTokenVerificator = require('./jwtTokenVerificator');

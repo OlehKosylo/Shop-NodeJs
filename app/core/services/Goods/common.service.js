@@ -1,3 +1,4 @@
+const {Op} = require("sequelize");
 const db = require('../../dataBase').getInstance();
 const {modelNames: {PHONES, TV, NOTEBOOKS}} = require('../../constants');
 
@@ -16,6 +17,43 @@ module.exports = {
         return model.findOne({
             where: {id}
         })
+    },
+
+    getGoodsByType: (typeOfGoods) => {
+        const model = getDataBaseModel(typeOfGoods);
+
+        return model.findAll({
+            type_of_goods: typeOfGoods
+        })
+    },
+
+    getGoodsBySortASC: (typeOfGoods) => {
+        const model = getDataBaseModel(typeOfGoods);
+
+        return model.findAll({
+            order: [['price', 'ASC']]
+        })
+    },
+
+    getGoodsBySortDESC: (typeOfGoods) => {
+        const model = getDataBaseModel(typeOfGoods);
+
+        return model.findAll({
+            order: [['price', 'DESC']],
+        })
+    },
+
+    getGoodsByPrice: (typeOfGoods, price) => {
+        const model = getDataBaseModel(typeOfGoods);
+
+        return model.findAll({
+                where: {
+                    price: {
+                        $lt: price
+                    }
+                },
+            }
+        )
     },
 
 };

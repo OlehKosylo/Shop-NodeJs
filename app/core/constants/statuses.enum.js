@@ -11,8 +11,16 @@ module.exports = {
     USER_NOT_FOUND: 'User not found',
     WRONG_ID:'Wrong ID',
 
+    ORDER_NOT_FOUND: 'Order not found',
+
+    GOOD_NOT_FOUND: 'Good not found',
+
     TITLE_ALREADY_EXIST: 'Title already exist',
     NOT_TITLE: 'Title not found',
+
+    WRONG_STRIPE_REQUEST: 'Wrong stripe request',
+
+
 
 };
 
