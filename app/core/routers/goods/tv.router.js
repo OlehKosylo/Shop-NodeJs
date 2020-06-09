@@ -2,11 +2,11 @@ const {Router} = require('express');
 
 const {TVController} = require('../../controllers');
 const {
+    idModelExist,
     TVMiddlewares: {
         isTVModelValid
     },
-    isTitleExist,
-    idModelExist
+    isTitleExist
 } = require('../../middlewares');
 
 const TVRouter = Router();

@@ -2,11 +2,11 @@ const {Router} = require('express');
 
 const {phoneController} = require('../../controllers');
 const {
+    idModelExist,
     phoneMiddlewares: {
         isPhoneModelValid,
     },
-    isTitleExist,
-    idModelExist
+    isTitleExist
 } = require('../../middlewares');
 
 const phoneRouter = Router();

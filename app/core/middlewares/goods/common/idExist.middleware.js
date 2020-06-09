@@ -1,14 +1,9 @@
 const Joi = require('joi');
 
 const {commonService} = require('../../../services');
+const {ErrorHandler, statusesErrors: {NOT_TITLE}} = require('../../../errors');
 const {idModelSchema} = require('../../../validators');
-const {
-    ErrorHandler,
-    statusesErrors: {NOT_TITLE}
-} = require('../../../errors');
-const {
-    statusesCode: {BAD_REQUEST},
-} = require('../../../constants');
+const {statusesCode: {BAD_REQUEST},} = require('../../../constants');
 
 
 module.exports = async (req, res, next) => {

@@ -1,5 +1,5 @@
 const db = require('../../dataBase').getInstance();
-const {modelNames: {ACTION_TOKENS, USER}} = require('../../constants');
+const {modelNames: {ACTION_TOKENS, USER}, statuses: {ACTIVATED, RECOVERED}} = require('../../constants');
 
 module.exports = {
     getUserByEmail: (email) => {
@@ -39,7 +39,7 @@ module.exports = {
         const UserModel = db.getModel(ACTION_TOKENS);
 
         await UserModel.update(
-            {token: 'Activated'},
+            {token: ACTIVATED},
             {where: {user_id}}
         )
     },
@@ -54,7 +54,7 @@ module.exports = {
         );
 
         await ActionTokens.update(
-            {token: 'Recovered'},
+            {token: RECOVERED},
             {where: {user_id, action_id: 2}}
         )
     }

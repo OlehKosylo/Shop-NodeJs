@@ -1,12 +1,12 @@
-const {userService, authService} = require('../../../services');
+const {authService} = require('../../../services');
 const {ErrorHandler} = require('../../../errors');
-const {
-    statusesCode: {UNAUTHORIZED, NOT_FOUND},
-} = require('../../../constants');
 const {
     authHelper:
         {jwtTokenVerificator}
 } = require('../../../helpers');
+const {
+    statusesCode: {UNAUTHORIZED},
+} = require('../../../constants');
 const {statuses:{NOT_VALID_TOKEN}} = require('../../../constants');
 
 module.exports = async (req, res, next) => {

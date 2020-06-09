@@ -1,4 +1,4 @@
-const {modelNames: {ACTION_TOKENS}} = require('../../constants');
+const {dataBaseWords: {NOW}, modelNames: {ACTION_TOKENS}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 
             createAt: {
                 type: DataTypes.STRING,
-                defaultValue: sequelize.fn('now')
+                defaultValue: sequelize.fn(NOW)
             }
 
         },

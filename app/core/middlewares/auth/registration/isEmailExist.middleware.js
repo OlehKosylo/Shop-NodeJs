@@ -1,4 +1,3 @@
-const {userService} = require('../../../services');
 const {
     ErrorHandler,
     statusesErrors: {WRONG_EMAIL, EMAIL_ALREADY_EXIST}
@@ -6,6 +5,7 @@ const {
 const {
     statusesCode: {NOT_FOUND, BAD_REQUEST},
 } = require('../../../constants');
+const {userService} = require('../../../services');
 
 module.exports = async (req, res, next) => {
     const email = req.body.email;

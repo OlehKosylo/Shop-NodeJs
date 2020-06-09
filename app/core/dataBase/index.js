@@ -2,16 +2,18 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 
+const {dataBaseWords:{SHOP, ROOT, LOCALHOST, MYSQL}} = require('../constants');
+
 module.exports = (() => {
     let instance;
 
     function initConnection() {
         const client = new Sequelize(
-            process.env.DB_NAME || 'shop',
-            process.env.DB_USER || 'root',
-            process.env.DB_PASSWORD || 'root', {
-                host: process.env.DB_HOST || 'localhost',
-                dialect: 'mysql'
+            process.env.DB_NAME || SHOP,
+            process.env.DB_USER || ROOT,
+            process.env.DB_PASSWORD || ROOT, {
+                host: process.env.DB_HOST || LOCALHOST,
+                dialect: MYSQL
             });
 
         let models = {};

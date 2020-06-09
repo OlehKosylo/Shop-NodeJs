@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
-const {phoneValidatorSchema} = require('../../../validators');
 const {ErrorHandler} = require('../../../errors');
+const {phoneValidatorSchema} = require('../../../validators');
 const {statusesCode: {BAD_REQUEST}} = require('../../../constants');
 
 module.exports = (req, res, next) => {

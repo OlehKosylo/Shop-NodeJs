@@ -1,13 +1,13 @@
 const {Router} = require('express');
 
-const {notebookController} = require('../../controllers');
 const {
+    idModelExist,
     notebookMiddlewares: {
         isNotebookModelValid
     },
     isTitleExist,
-    idModelExist
 } = require('../../middlewares');
+const {notebookController} = require('../../controllers');
 
 const notebookRouter = Router();
 

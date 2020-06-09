@@ -1,26 +1,29 @@
 const nodemailer = require('nodemailer');
 
 const {ErrorHandler} = require('../../errors');
-const {statusesCode: {BAD_REQUEST}} = require('../../constants');
+const {
+    emailWords: {SERVICE, USER, PASS, FROM},
+    statusesCode: {BAD_REQUEST}
+} = require('../../constants');
 
 module.exports = (email, thema, message) => {
 
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: process.env.SERVICE || SERVICE,
         auth: {
-            user: 'ottonewslettersite@gmail.com',
-            pass: 'jhpqtgqmnrcypuxj'
+            user: process.env.USER || USER,
+            pass: process.env.PASS || PASS
         }
     });
 
     const mailOptions = {
-        from: 'ottonewslettersite@gmail.com',
+        from: process.env.FROM || FROM,
         to: email,
         subject: thema,
         text: message
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
             throw new ErrorHandler(error.message, BAD_REQUEST, 4000);

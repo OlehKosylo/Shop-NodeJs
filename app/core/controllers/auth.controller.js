@@ -1,8 +1,13 @@
 const {authService, userService} = require('../services');
-const {authHelper: {hashPassword, uuidToken, jwtTokenGenerator, jwtTokenForRecoverPassword},
-    emailSender} = require('../helpers');
-const {statusesCode, jwtSecretWords: {AUTHORIZATION}} = require('../constants');
-
+const {
+    authHelper: {hashPassword, uuidToken, jwtTokenGenerator, jwtTokenForRecoverPassword},
+    emailSender,
+} = require('../helpers');
+const {
+    emailWords: {ACTIVATE_ACCOUNT, RECOVER_PASSWORD},
+    jwtSecretWords: {AUTHORIZATION},
+    statusesCode
+} = require('../constants');
 
 module.exports = {
     registerUser: async (req, res) => {
@@ -13,7 +18,7 @@ module.exports = {
 
             let token = await uuidToken();
 
-            await emailSender(user.email, 'Activate your account', token);
+            await emailSender(user.email, ACTIVATE_ACCOUNT, token);
 
             await authService.registrationUser(user, token);
 
@@ -78,7 +83,7 @@ module.exports = {
 
             let {token} = await jwtTokenForRecoverPassword();
 
-            await emailSender(user.email, 'Recover password in your account', token);
+            await emailSender(user.email, RECOVER_PASSWORD, token);
 
             await authService.setTokenForRecoverPassword(user, token);
 

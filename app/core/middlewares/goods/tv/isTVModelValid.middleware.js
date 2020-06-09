@@ -1,8 +1,8 @@
 const Joi = require('joi');
 
-const {TVValidatorSchema} = require('../../../validators');
 const {ErrorHandler} = require('../../../errors');
 const {statusesCode: {BAD_REQUEST}} = require('../../../constants');
+const {TVValidatorSchema} = require('../../../validators');
 
 module.exports = (req, res, next) => {
 

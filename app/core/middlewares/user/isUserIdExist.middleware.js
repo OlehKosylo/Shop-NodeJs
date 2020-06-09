@@ -1,11 +1,6 @@
+const {ErrorHandler, statusesErrors: {USER_NOT_FOUND}} = require('../../errors');
+const {statusesCode: {NOT_FOUND, BAD_REQUEST},} = require('../../constants');
 const {userService} = require('../../services');
-const {
-    ErrorHandler,
-    statusesErrors: {USER_NOT_FOUND}
-} = require('../../errors');
-const {
-    statusesCode: {NOT_FOUND, BAD_REQUEST},
-} = require('../../constants');
 
 module.exports = async (req, res, next) => {
     const userId = req.query.userId;

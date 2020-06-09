@@ -2,10 +2,6 @@ const {Router} = require('express');
 
 const {authController} = require('../../controllers');
 const {
-    registrationProcess: {
-        isUserValid,
-        isEmailExist
-    },
     isActionTokenExist,
     isEmailExistRecover,
     isRecoverTokenExist,
@@ -13,6 +9,10 @@ const {
         loginMiddleware,
         checkAccessToken,
         checkRefreshToken,
+    },
+    registrationProcess: {
+        isUserValid,
+        isEmailExist
     },
 } = require('../../middlewares');
 

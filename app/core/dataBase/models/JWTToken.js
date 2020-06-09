@@ -1,4 +1,4 @@
-const {modelNames: {JWT_TOKEN}} = require('../../constants');
+const {dataBaseWords: {NOW}, modelNames: {JWT_TOKEN}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
             createAt: {
                 type: DataTypes.STRING,
-                defaultValue: sequelize.fn('now')
+                defaultValue: sequelize.fn(NOW)
             }
         },
         {

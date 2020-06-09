@@ -1,7 +1,5 @@
-const {TVService} = require('../../services');
-const {} = require('../../helpers');
 const {statusesCode} = require('../../constants');
-
+const {TVService} = require('../../services');
 
 module.exports = {
     createTVModel: async (req, res, next) => {

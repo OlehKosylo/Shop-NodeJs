@@ -1,4 +1,7 @@
 module.exports = {
+    ACTIVATED: 'Activated',
+    RECOVERED: 'Recovered',
+
     EMAIL_ALREADY_EXIST: 'Email already exist',
     WRONG_EMAIL:'Wrong email',
 
@@ -9,6 +12,7 @@ module.exports = {
     WRONG_ID:'Wrong ID',
 
     TITLE_ALREADY_EXIST: 'Title already exist',
-    NOT_TITLE: 'Title not found'
+    NOT_TITLE: 'Title not found',
+
 };
 

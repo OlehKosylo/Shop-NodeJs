@@ -24,13 +24,13 @@ function getDataBaseModel(typeOfGoods) {
     let model = null;
 
     switch (typeOfGoods) {
-        case 'Phone':
+        case PHONES:
             model = db.getModel(PHONES);
             break;
-        case 'TV':
+        case TV:
             model = db.getModel(TV);
             break;
-        case 'Notebook':
+        case NOTEBOOKS:
             model = db.getModel(NOTEBOOKS);
             break;
     }
