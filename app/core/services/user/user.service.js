@@ -58,5 +58,4 @@ module.exports = {
             {where: {user_id, action_id: 2}}
         )
     }
-
 };

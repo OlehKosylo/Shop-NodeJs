@@ -1,5 +1,5 @@
 const {statusesCode} = require('../../constants');
-const {TVService, commonService} = require('../../services');
+const {TVService} = require('../../services');
 
 module.exports = {
     createTVModel: async (req, res, next) => {
@@ -37,6 +37,4 @@ module.exports = {
             next(e)
         }
     },
-
-
 };

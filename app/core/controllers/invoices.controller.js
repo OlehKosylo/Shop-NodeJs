@@ -4,7 +4,6 @@ const {statusesCode} = require('../constants');
 
 
 module.exports = {
-
     makePurchase: async (req, res, next) => {
         try {
             const {stripeTokenId, price} = req.body;

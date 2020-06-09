@@ -3,13 +3,17 @@ const {statusesCode} = require('../constants');
 
 module.exports = {
 
-    getUser: async (req,res,next) =>  {
+    getUser: async (req, res, next) => {
         res.json(req.user);
     },
 
     updateUser: async (req, res, next) => {
-        await userService.updateUser(req.body);
+        try {
+            await userService.updateUser(req.body);
 
-        res.sendStatus(statusesCode.OK);
+            res.sendStatus(statusesCode.OK);
+        } catch (e) {
+            next(e)
+        }
     }
 };

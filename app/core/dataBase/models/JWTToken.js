@@ -1,4 +1,4 @@
-const {dataBaseWords: {NOW}, modelNames: {JWT_TOKEN}} = require('../../constants');
+const {dataBaseWords: {NOW, USERID}, modelNames: {JWT_TOKEN}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.import('./User.js');
 
     JWTToken.belongsTo(User, {
-        foreignKey: 'userId'
+        foreignKey: USERID
     });
 
     return JWTToken;

@@ -1,4 +1,4 @@
-const {notebookService, commonService} = require('../../services');
+const {notebookService} = require('../../services');
 const {statusesCode} = require('../../constants');
 
 module.exports = {

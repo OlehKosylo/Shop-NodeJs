@@ -1,4 +1,4 @@
-const {phonesService, commonService} = require('../../services');
+const {phonesService} = require('../../services');
 const {statusesCode} = require('../../constants');
 
 module.exports = {
@@ -37,6 +37,4 @@ module.exports = {
             next(e)
         }
     },
-
-
 };

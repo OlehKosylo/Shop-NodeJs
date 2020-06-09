@@ -1,7 +1,5 @@
 module.exports = {
-    JWT_SECRET: 'secretWord',
-    JWT_REFRESH_SECRET: 'refreshSecretWord',
     AUTHORIZATION:'Authorization',
+    JWT_SECRET: process.env.JWT_SECRET ||'$2b$10$lXChHZhnT1gBOpWAaQ6re.GtzKMYuuW51YhBe9nZsGjzsO.9NoARG',
+    JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || '$2b$10$9YFFZGUFwgARNHV3jbHxkeyXhKXBgLZqBeevRijxjft2XabnANvga',
 };
-
-// must be hashed

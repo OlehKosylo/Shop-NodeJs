@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 const db = require('./core/dataBase').getInstance();
 db.setModels();
 
-
 const cors = require('cors');
 app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
@@ -35,13 +34,11 @@ app.use('/invoice', invoiceRouter);
 
 app.use('*', (err, req, res, next) => {
     let message = err.message;
-
     if (err.parent) {
         message = err.parent.sqlMessage;
     }
 
-    res
-        .status(err.status || 404)
+    res.status(err.status || 404)
         .json({
             message: message || 'Page not found',
             code: err.customErrorCode
@@ -55,7 +52,6 @@ app.listen(port, (err) => {
     }
     console.log(`server is listening on ${port}`)
 });
-
 
 process.on("unhandledRejection", reason => {
     //Fake write in logger

@@ -1,4 +1,4 @@
-const {dataBaseWords: {NOW}, modelNames: {ACTION_TOKENS}} = require('../../constants');
+const {dataBaseWords: {NOW, USER_ID}, modelNames: {ACTION_TOKENS}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     const User = sequelize.import('./User.js');
 
     ActionTokens.belongsTo(User, {
-        foreignKey: 'user_id'
+        foreignKey: USER_ID
     });
 
     return ActionTokens;

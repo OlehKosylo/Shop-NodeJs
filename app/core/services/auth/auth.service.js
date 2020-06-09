@@ -46,8 +46,4 @@ module.exports = {
 
         await ActionTokens.create({action_id: 2, user_id: user.id, token});
     },
-
-
-
-
 };

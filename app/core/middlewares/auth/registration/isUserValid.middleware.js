@@ -15,7 +15,5 @@ module.exports = (req, res, next) => {
         return next(new ErrorHandler(error.details[0].message, BAD_REQUEST, 4002))
     }
 
-
-
     next();
 };

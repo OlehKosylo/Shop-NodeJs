@@ -10,5 +10,4 @@ module.exports = () => {
         access_token,
         refresh_token
     }
-
 };

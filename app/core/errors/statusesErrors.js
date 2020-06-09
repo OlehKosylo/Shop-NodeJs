@@ -75,7 +75,4 @@ module.exports = {
         message: WRONG_EMAIL,
         code: 4001
     },
-
-
-
 };

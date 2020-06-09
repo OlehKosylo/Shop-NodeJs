@@ -44,7 +44,6 @@ module.exports = {
 
     login: async (req, res, next) => {
         try {
-            // TODO generate token Pair
             const jwtTokens = jwtTokenGenerator();
             await authService.createTokenPair({...jwtTokens, userId: req.user.id});
             res.json(jwtTokens);

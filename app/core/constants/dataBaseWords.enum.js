@@ -8,5 +8,9 @@ module.exports = {
 
     PRICE: 'Price',
     ASC: 'ASC',
-    DESC: 'DESC'
+    DESC: 'DESC',
+
+    // ForeignKeys
+    USER_ID: 'user_id',
+    USERID: 'userId',
 };

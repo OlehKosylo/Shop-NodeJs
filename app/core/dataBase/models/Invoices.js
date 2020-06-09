@@ -1,8 +1,8 @@
-const {dataBaseWords: {NOW}, modelNames: {INVOICES}} = require('../../constants');
+const {dataBaseWords: {NOW, USER_ID}, modelNames: {INVOICES}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
-    const INVOICES = sequelize.define('Invoices', {
+    const INVOICE = sequelize.define(INVOICES, {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
@@ -51,17 +51,17 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         {
-            tableName: "Invoices",
+            tableName: INVOICES,
             timestamps: false
         });
 
 
     const User = sequelize.import('./User.js');
 
-    INVOICES.belongsTo(User, {
-        foreignKey: 'user_id'
+    INVOICE.belongsTo(User, {
+        foreignKey: USER_ID
     });
 
-    return INVOICES;
+    return INVOICE;
 
 };
