@@ -1,8 +1,12 @@
 module.exports = {
-  SHOP: 'shop',
-  ROOT: 'root',
-  LOCALHOST: 'localhost',
-  MYSQL: 'mysql',
+    SHOP: 'shop',
+    ROOT: 'root',
+    LOCALHOST: 'localhost',
+    MYSQL: 'mysql',
 
-  NOW : 'now',
+    NOW: 'now',
+
+    PRICE: 'Price',
+    ASC: 'ASC',
+    DESC: 'DESC'
 };

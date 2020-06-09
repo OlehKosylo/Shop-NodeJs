@@ -1,5 +1,7 @@
-const {Op} = require("sequelize");
+const { Op } = require("sequelize");
 const db = require('../../dataBase').getInstance();
+
+const {dataBaseWords:{PRICE, ASC, DESC}} = require('../../constants')
 const {modelNames: {PHONES, TV, NOTEBOOKS}} = require('../../constants');
 
 module.exports = {
@@ -31,7 +33,7 @@ module.exports = {
         const model = getDataBaseModel(typeOfGoods);
 
         return model.findAll({
-            order: [['price', 'ASC']]
+            order: [[PRICE, ASC]]
         })
     },
 
@@ -39,7 +41,7 @@ module.exports = {
         const model = getDataBaseModel(typeOfGoods);
 
         return model.findAll({
-            order: [['price', 'DESC']],
+            order: [[PRICE, DESC]],
         })
     },
 
@@ -48,9 +50,7 @@ module.exports = {
 
         return model.findAll({
                 where: {
-                    price: {
-                        $lt: price
-                    }
+                    price: {[Op.lt] : price}
                 },
             }
         )
