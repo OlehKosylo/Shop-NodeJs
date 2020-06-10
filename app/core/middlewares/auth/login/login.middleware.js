@@ -1,4 +1,6 @@
-const Joi = require('joi');
+const {appSettings} = require('../../../constants');
+const Joi = require(appSettings.JOI);
+
 const {loginValidatorSchema} = require('../../../validators');
 const {userService} = require('../../../services');
 const {authHelper: {checkHashPassword}} = require('../../../helpers');

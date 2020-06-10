@@ -1,6 +1,8 @@
-const nodemailer = require('nodemailer');
-const EmailTemplates = require('email-templates');
-const path = require('path');
+const {appSettings} = require('../../constants');
+
+const nodemailer = require(appSettings.NODE_MAILER);
+const EmailTemplates = require(appSettings.EMAIL_TEMPLATES);
+const path = require(appSettings.PATH);
 
 const {ErrorHandler} = require('../../errors');
 const {

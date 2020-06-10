@@ -4,8 +4,9 @@ module.exports.invoiceValidorSchema = require('./invoices/invoice.validator');
 module.exports.loginValidatorSchema = require('./auth/login.validator');
 module.exports.phoneValidatorSchema = require('./goods/phone.validator');
 module.exports.priceValidatorSchema = require('./goods/priceSchema');
+module.exports.TVValidatorSchema = require('./goods/tv.validator');
 module.exports.userRegistrationValidatorSchema = require('./auth/registration.validator');
 module.exports.userValidatorSchema = require('./user/user.validator');
-module.exports.TVValidatorSchema = require('./goods/tv.validator');
+
 
 

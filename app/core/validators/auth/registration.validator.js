@@ -1,4 +1,6 @@
-const Joi = require('joi');
+const {appSettings} = require('../../constants');
+const Joi = require(appSettings.JOI);
+
 const {regex: {EMAIL}} = require('../../constants');
 
 module.exports = Joi.object().keys({

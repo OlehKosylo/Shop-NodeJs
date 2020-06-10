@@ -52,8 +52,6 @@ module.exports = {
         code: 4011
     },
 
-    // FORBIDDEN
-
 
     // NOT FOUND
     USER_NOT_FOUND: {

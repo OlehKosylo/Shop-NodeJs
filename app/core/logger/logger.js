@@ -1,4 +1,6 @@
-const {createLogger, transports, format} = require('winston');
+const {appSettings} = require('../constants');
+
+const {createLogger, transports, format} = require(appSettings.WINSTON);
 
 const logger = createLogger({
   transports: [

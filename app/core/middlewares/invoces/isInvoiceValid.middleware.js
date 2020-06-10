@@ -1,4 +1,5 @@
-const Joi = require('joi');
+const {appSettings} = require('../../../constants');
+const Joi = require(appSettings.JOI);
 
 const {ErrorHandler} = require('../../errors');
 const {statusesCode: {BAD_REQUEST}} = require('../../constants');

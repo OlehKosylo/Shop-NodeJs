@@ -1,4 +1,5 @@
 const {commonService} = require('../../services');
+const {dataBaseWords: {ASC, DESC, PRICE}} = require('../../constants');
 
 module.exports = {
     getAllGoods: async (req, res, next) => {
@@ -24,13 +25,13 @@ module.exports = {
             let allNotebooks;
 
             switch (req.params.type) {
-                case 'asc':
+                case ASC.toLocaleLowerCase():
                     allNotebooks = await commonService.getGoodsBySortASC(req.query.type_of_goods);
                     break;
-                case 'desc':
+                case DESC.toLocaleLowerCase():
                     allNotebooks = await commonService.getGoodsBySortDESC(req.query.type_of_goods);
                     break;
-                case 'price':
+                case PRICE.toLocaleLowerCase():
                     allNotebooks = await commonService.getGoodsByPrice(req.query.type_of_goods, +req.query.price);
                     break;
             }
@@ -40,5 +41,4 @@ module.exports = {
             next(e)
         }
     },
-
 };

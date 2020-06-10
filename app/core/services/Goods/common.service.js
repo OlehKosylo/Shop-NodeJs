@@ -1,4 +1,5 @@
-const { Op } = require("sequelize");
+const {appSettings} = require('../../constants');
+const { Op } = require(appSettings.SEQUELIZE);
 const db = require('../../dataBase').getInstance();
 
 const {dataBaseWords:{PRICE, ASC, DESC}} = require('../../constants')

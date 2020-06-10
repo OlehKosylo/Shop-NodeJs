@@ -1,4 +1,5 @@
-const Joi = require('joi');
+const {appSettings} = require('../../../constants');
+const Joi = require(appSettings.JOI);
 
 const {commonService} = require('../../../services');
 const {ErrorHandler, statusesErrors: {GOOD_NOT_FOUND}} = require('../../../errors');
@@ -9,8 +10,6 @@ const {statusesCode: {BAD_REQUEST},} = require('../../../constants');
 module.exports = async (req, res, next) => {
     let id;
     let type_of_goods;
-
-
 
     if (req.body.id) {
         id = req.body.id;

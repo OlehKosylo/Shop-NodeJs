@@ -1,4 +1,5 @@
-const {Router} = require('express');
+const {appSettings} = require('../../constants');
+const {Router} = require(appSettings.EXPRESS);
 
 const {invoicesController} = require('../../controllers');
 const {stripe: {isInvoiceValid, isOrder}} = require('../../middlewares');

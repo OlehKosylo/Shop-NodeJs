@@ -2,7 +2,6 @@ const {invoiceService: {setInvoice, getDoneOrders, getAllOrders, getCompletedOrd
 const {makePurchase} = require('../helpers');
 const {statusesCode} = require('../constants');
 
-
 module.exports = {
     makePurchase: async (req, res, next) => {
         try {

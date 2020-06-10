@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false
         });
 
-    //Звязки
     const User = sequelize.import('./User.js');
 
     JWTToken.belongsTo(User, {
