@@ -15,6 +15,8 @@ module.exports = {
 
     GOOD_NOT_FOUND: 'Good not found',
 
+    PAGE_NOT_FOUND: 'Page not found',
+
     TITLE_ALREADY_EXIST: 'Title already exist',
     NOT_TITLE: 'Title not found',
 

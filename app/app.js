@@ -1,30 +1,34 @@
+const {appSettings, statuses} = require('./core/constants');
+
+// Default settings require
 const port = process.env.PORT || 3333;
-const bodyParser = require('body-parser');
-const engines = require('consolidate');
-require('dotenv').config();
+const bodyParser = require(appSettings.BODY_PARSER);
+const engines = require(appSettings.CONSOLIDATE);
+const express = require(appSettings.EXPRESS);
+const cors = require(appSettings.CORS);
+require(appSettings.DOTENV).config();
 
+require('./core/dataBase').getInstance().setModels();
+const logger = require('./core/logger/logger');
 
-let express = require('express');
+// Settings server
 const app = express();
 
-app.engine('ejs', engines.ejs);
-app.set('views', './views');
-app.set('view engine', 'ejs');
+app.engine(appSettings.EJS, engines.ejs);
+app.set(appSettings.VIEWS, './views');
+app.set(appSettings.VIEW_ENGINE, 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const db = require('./core/dataBase').getInstance();
-db.setModels();
-
-const cors = require('cors');
 app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(require('body-parser').urlencoded({
+app.use(require(appSettings.BODY_PARSER).urlencoded({
     extended: true,
 }));
 
+// Routing
 const {authRouter, phoneRouter, notebookRouter, TVRouter, userRouter, invoiceRouter} = require('./core/routers');
 app.use('/auth', authRouter);
 app.use('/phones', phoneRouter);
@@ -33,6 +37,7 @@ app.use('/tv', TVRouter);
 app.use('/user', userRouter);
 app.use('/invoice', invoiceRouter);
 
+// Handling errors
 app.use('*', (err, req, res, next) => {
     let message = err.message;
     if (err.parent) {
@@ -41,23 +46,25 @@ app.use('*', (err, req, res, next) => {
 
     res.status(err.status || 404)
         .json({
-            message: message || 'Page not found',
+            message: message || statuses.PAGE_NOT_FOUND,
             code: err.customErrorCode
         })
 });
 
-
+// Server starter
 app.listen(port, (err) => {
     if (err) {
-        return console.log('something bad happened', err)
+        return console.log(appSettings.SOMETHING_BAD_HAPPENED, err)
     }
-    console.log(`server is listening on ${port}`)
+    console.log(`${appSettings.SERVER_IS_LISTENING_ON} ${port}`)
 });
 
-process.on("unhandledRejection", reason => {
-    //Fake write in logger
+// Write error in logger
+process.on(appSettings.UNHANDLED_REJECTION, reason => {
+    logger.error(appSettings.UNHANDLED_REJECTION_HAPPENED, reason);
+
     console.log("---------------------------------------------------------");
-    console.log("Possibly unhandled rejection happened", reason);
+    console.log(appSettings.UNHANDLED_REJECTION_HAPPENED, reason);
     console.log("---------------------------------------------------------");
 
     process.exit(0);

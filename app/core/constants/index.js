@@ -1,3 +1,4 @@
+module.exports.appSettings = require('./appSettings');
 module.exports.dataBaseWords = require('./dataBaseWords.enum');
 module.exports.emailWords = require('./emailWords.enum');
 module.exports.emailAction = require('./emailAction.enum');
