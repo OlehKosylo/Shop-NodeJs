@@ -1,0 +1,18 @@
+<%- include('../includes/header.ejs') %>
+<div class="text-center height300 bg-silver mt-100">
+
+    <h3>Hello, <%= userName %></h3>
+    <h4> Welcome to Shop.</h4>
+    <br> <br>
+
+ <div>
+     <span>
+         Please, activate your account. Visit on this link :
+         <a href=`http://localhost:4200/activate/<%= token %>`>
+             <span class="red">Press here</span>
+         </a>
+     </span>
+ </div>
+</div>
+<%- include('../includes/footer.ejs') %>
+

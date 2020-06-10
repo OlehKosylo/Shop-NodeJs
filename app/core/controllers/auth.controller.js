@@ -4,10 +4,11 @@ const {
     emailSender,
 } = require('../helpers');
 const {
-    emailWords: {ACTIVATE_ACCOUNT, RECOVER_PASSWORD},
+    emailAction: {ACTIVATE_USER_ACCOUNT, RECOVER_USER_PASSWORD},
     jwtSecretWords: {AUTHORIZATION},
     statusesCode
 } = require('../constants');
+
 
 module.exports = {
     registerUser: async (req, res, next) => {
@@ -18,7 +19,7 @@ module.exports = {
 
             let token = await uuidToken();
 
-            await emailSender(user.email, ACTIVATE_ACCOUNT, token);
+            await emailSender(user.email, ACTIVATE_USER_ACCOUNT, {token, userName: user.name});
 
             const user_status = await checkUserStatus(user.passwordForStatus);
 
@@ -84,7 +85,7 @@ module.exports = {
 
             let {token} = await jwtTokenForRecoverPassword();
 
-            await emailSender(user.email, RECOVER_PASSWORD, token);
+            await emailSender(user.email, RECOVER_USER_PASSWORD, {token, userName: user.name});
 
             await authService.setTokenForRecoverPassword(user, token);
 
