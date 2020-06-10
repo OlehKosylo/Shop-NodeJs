@@ -1,4 +1,4 @@
-const {appSettings} = require('../../../constants');
+const {appSettings} = require('../../constants');
 const Joi = require(appSettings.JOI);
 
 const {ErrorHandler,  statusesErrors: {ORDER_NOT_FOUND}} = require('../../errors');
