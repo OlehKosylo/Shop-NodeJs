@@ -15,6 +15,8 @@ module.exports = {
         try {
             let user = req.body;
 
+            console.log(user);
+
             user.password = await hashPassword(user.password);
 
             let token = await uuidToken();
@@ -25,7 +27,8 @@ module.exports = {
 
             await authService.registrationUser({...user, user_status}, token);
 
-            res.sendStatus(statusesCode.CREATED);
+            // res.sendStatus(statusesCode.CREATED);
+            res.status(statusesCode.CREATED).end();
         } catch (e) {
             next(e);
         }
@@ -37,7 +40,8 @@ module.exports = {
 
             await userService.setActivateStatus(user_id);
 
-            res.sendStatus(statusesCode.CREATED);
+            // res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e)
         }
@@ -47,6 +51,8 @@ module.exports = {
         try {
             const jwtTokens = jwtTokenGenerator();
             await authService.createTokenPair({...jwtTokens, userId: req.user.id});
+
+            console.log(jwtTokens);
             res.json(jwtTokens);
         } catch (e) {
             next(e)
@@ -58,7 +64,8 @@ module.exports = {
             const access_token = req.get(AUTHORIZATION);
             await authService.deleteTokenByParams({access_token});
 
-            res.sendStatus(statusesCode.OK);
+            // res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e)
         }
@@ -67,12 +74,13 @@ module.exports = {
     refresh: async (req, res, next) => {
         try {
             // Must be transaction
-            const refresh_token = req.get(AUTHORIZATION);
+            const {refresh_token} = req.body;
             await authService.deleteTokenByParams({refresh_token});
 
             const jwtTokens = jwtTokenGenerator();
             await authService.createTokenPair({...jwtTokens, userId: req.user_id});
             //
+
             res.json(jwtTokens);
         } catch (e) {
             next(e)
@@ -89,7 +97,8 @@ module.exports = {
 
             await authService.setTokenForRecoverPassword(user, token);
 
-            res.sendStatus(statusesCode.OK);
+            // res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e);
         }
@@ -103,9 +112,14 @@ module.exports = {
 
             await userService.resetPassword(user_id, password);
 
-            res.sendStatus(statusesCode.OK);
+            // res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e);
         }
     }
 };
+
+
+
+

@@ -10,7 +10,7 @@ const {
 const {statuses:{NOT_VALID_TOKEN}} = require('../../../constants');
 
 module.exports = async (req, res, next) => {
-    const token = req.params.token;
+    const token = req.body.token;
 
     try {
         await jwtTokenVerificator(token);

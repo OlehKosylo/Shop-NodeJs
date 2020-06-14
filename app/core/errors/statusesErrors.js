@@ -52,6 +52,11 @@ module.exports = {
         code: 4011
     },
 
+    NOT_VALID_REFRESH_TOKEN: {
+        message: NOT_VALID_TOKEN,
+        code: 4012
+    },
+
 
     // NOT FOUND
     USER_NOT_FOUND: {

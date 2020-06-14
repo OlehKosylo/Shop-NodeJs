@@ -22,7 +22,7 @@ const authRouter = Router();
 authRouter.post('/registration', isUserValid, isEmailExist, authController.registerUser);
 
 authRouter.post('/recoverPassword', isEmailExistRecover, authController.recoverPassword);
-authRouter.post('/recoverPassword/:token', isRecoverTokenExist, authController.recoverPasswordSetNew);
+authRouter.post('/recoverPassword/setNew', isRecoverTokenExist, authController.recoverPasswordSetNew);
 
 authRouter.get('/activateAccount/:token', isActionTokenExist, authController.activateAccount);
 

@@ -19,7 +19,7 @@ module.exports = (() => {
         let models = {};
 
         function getModels() {
-            const modelsPath = path.join(process.cwd(), 'app', 'core', 'dataBase', 'models');
+            const modelsPath = path.join(process.cwd(),'core', 'dataBase', 'models');
             fs.readdir(modelsPath, (err, files) => {
                 files.forEach(file => {
                     const [modelName] = file.split('.');
