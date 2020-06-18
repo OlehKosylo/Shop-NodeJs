@@ -1,15 +1,18 @@
-const {invoiceService: {setInvoice, getDoneOrders, getAllOrders, getCompletedOrders, updateSendStatus}} = require('../services');
+const {invoiceService: {setInvoice, getDoneOrders, getAllOrders, getCompletedOrders, updateSendStatus, getAllGoods}} = require('../services');
 const {makePurchase} = require('../helpers');
 const {statusesCode} = require('../constants');
 
 module.exports = {
     makePurchase: async (req, res, next) => {
         try {
+            console.log(req.body);
             const {stripeTokenId, price} = req.body;
             await makePurchase(stripeTokenId, price);
 
             await setInvoice(req.body);
-            res.sendStatus(statusesCode.OK)
+
+            // res.sendStatus(statusesCode.OK)
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e)
         }
@@ -33,9 +36,16 @@ module.exports = {
         res.json(orders);
     },
 
+    getAllGoods: async (req, res, next) => {
+        const goods = await getAllGoods();
+
+        res.json(goods);
+    },
+
     updateSendStatus: async (req, res, next) => {
         await updateSendStatus(req.order);
 
-        res.sendStatus(statusesCode.OK);
+        // res.sendStatus(statusesCode.OK);
+        res.status(statusesCode.OK).end();
     }
 };

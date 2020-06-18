@@ -15,13 +15,7 @@ module.exports = async (req, res, next) => {
         return next(new ErrorHandler(USER_NOT_FOUND.message, BAD_REQUEST, USER_NOT_FOUND.code))
     }
 
-    req.user = {
-        id: user.id,
-        email: user.email,
-        age: user.age,
-        name: user.name,
-        surname: user.surname
-    };
+    req.user = user;
 
     next();
 };

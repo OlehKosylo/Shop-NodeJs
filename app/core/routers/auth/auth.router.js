@@ -7,9 +7,10 @@ const {
     isEmailExistRecover,
     isRecoverTokenExist,
     loginProcess: {
-        loginMiddleware,
+        checkPasswordMiddleware,
         checkAccessToken,
         checkRefreshToken,
+        isLoginModelValid
     },
     registrationProcess: {
         isUserValid,
@@ -26,7 +27,7 @@ authRouter.post('/recoverPassword/setNew', isRecoverTokenExist, authController.r
 
 authRouter.get('/activateAccount/:token', isActionTokenExist, authController.activateAccount);
 
-authRouter.post('/login', loginMiddleware, authController.login);
+authRouter.post('/login', isLoginModelValid, isEmailExistRecover, checkPasswordMiddleware, authController.login);
 authRouter.post('/logout', checkAccessToken, authController.logout);
 authRouter.post('/refresh', checkRefreshToken, authController.refresh);
 

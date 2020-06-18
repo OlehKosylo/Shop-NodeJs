@@ -6,6 +6,7 @@ module.exports.phoneValidatorSchema = require('./goods/phone.validator');
 module.exports.priceValidatorSchema = require('./goods/priceSchema');
 module.exports.TVValidatorSchema = require('./goods/tv.validator');
 module.exports.userRegistrationValidatorSchema = require('./auth/registration.validator');
+module.exports.userRecoverPassword = require('./user/userRecoverPassword.validator');
 module.exports.userValidatorSchema = require('./user/user.validator');
 
 

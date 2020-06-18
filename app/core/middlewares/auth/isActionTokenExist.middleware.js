@@ -8,7 +8,7 @@ const {
 } = require('../../constants');
 
 module.exports = async (req, res, next) => {
-    const token = req.params.token;
+    const token = req.query.token;
 
     if (token.isEmpty) {
         return next(new ErrorHandler(NOT_TOKEN.message, BAD_REQUEST, NOT_TOKEN.code))

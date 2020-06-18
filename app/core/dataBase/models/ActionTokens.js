@@ -36,12 +36,12 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false
         });
 
+    ActionTokens.associate = models => {
+        ActionTokens.belongsTo(models.User, {
+            foreignKey: USER_ID,
+        })
+    };
 
-    const User = sequelize.import('./User.js');
-
-    ActionTokens.belongsTo(User, {
-        foreignKey: USER_ID
-    });
 
     return ActionTokens;
 };

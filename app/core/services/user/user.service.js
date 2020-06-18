@@ -5,9 +5,11 @@ module.exports = {
     getUserByEmail: (email) => {
         const UserModel = db.getModel(USER);
 
+
         return UserModel.findOne({
-            where: {email}
+            where: {email},
         })
+
     },
 
     getUserByToken: (token) => {
@@ -21,7 +23,7 @@ module.exports = {
     getUserById: (id) => {
         const UserModel = db.getModel(USER);
 
-        return  UserModel.findOne({
+        return UserModel.findOne({
             where: {id}
         });
     },
@@ -29,7 +31,7 @@ module.exports = {
     updateUser: (user) => {
         const UserModel = db.getModel(USER);
 
-        return  UserModel.update(
+        return UserModel.update(
             {...user},
             {where: {id: user.id}}
         );
@@ -57,5 +59,11 @@ module.exports = {
             {token: RECOVERED},
             {where: {user_id, action_id: 2}}
         )
-    }
+    },
+
+    setTokenForChangePassword: async (user, token) => {
+        const ActionTokens = db.getModel(ACTION_TOKENS);
+
+        await ActionTokens.create({action_id: 3, user_id: user.id, token});
+    },
 };

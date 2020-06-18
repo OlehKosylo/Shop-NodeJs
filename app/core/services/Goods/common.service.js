@@ -1,8 +1,8 @@
 const {appSettings} = require('../../constants');
-const { Op } = require(appSettings.SEQUELIZE);
+const {Op} = require(appSettings.SEQUELIZE);
 const db = require('../../dataBase').getInstance();
 
-const {dataBaseWords:{PRICE, ASC, DESC}} = require('../../constants')
+const {dataBaseWords: {PRICE, ASC, DESC, ID, TITLE, IMAGE_URL, DESCRIPTION, TYPE_OF_GOODS}} = require('../../constants')
 const {modelNames: {PHONES, TV, NOTEBOOKS}} = require('../../constants');
 
 module.exports = {
@@ -26,6 +26,7 @@ module.exports = {
         const model = getDataBaseModel(typeOfGoods);
 
         return model.findAll({
+            attributes: [ID, TITLE, IMAGE_URL, DESCRIPTION, TYPE_OF_GOODS],
             type_of_goods: typeOfGoods
         })
     },
@@ -34,6 +35,7 @@ module.exports = {
         const model = getDataBaseModel(typeOfGoods);
 
         return model.findAll({
+            attributes: [ID, TITLE, IMAGE_URL, DESCRIPTION, TYPE_OF_GOODS],
             order: [[PRICE, ASC]]
         })
     },
@@ -42,6 +44,7 @@ module.exports = {
         const model = getDataBaseModel(typeOfGoods);
 
         return model.findAll({
+            attributes: [ID, TITLE, IMAGE_URL, DESCRIPTION, TYPE_OF_GOODS],
             order: [[PRICE, DESC]],
         })
     },
@@ -50,8 +53,9 @@ module.exports = {
         const model = getDataBaseModel(typeOfGoods);
 
         return model.findAll({
+                attributes: [ID, TITLE, IMAGE_URL, DESCRIPTION, TYPE_OF_GOODS],
                 where: {
-                    price: {[Op.lt] : price}
+                    price: {[Op.lt]: price}
                 },
             }
         )

@@ -1,5 +1,5 @@
 const db = require('../../dataBase').getInstance();
-const {modelNames: {INVOICES}} = require('../../constants');
+const {modelNames: {INVOICES, PHONES, NOTEBOOKS, TV}} = require('../../constants');
 
 module.exports = {
     setInvoice: async (invoice) => {
@@ -45,5 +45,17 @@ module.exports = {
             {sending_status: 1},
             {where: {...order}}
         )
+    },
+
+    getAllGoods: async () => {
+        const phonesModel = db.getModel(PHONES);
+        const notebooksModel = db.getModel(NOTEBOOKS);
+        const TVsModel = db.getModel(TV);
+
+        const phones = await phonesModel.findAll();
+        const notebook = await notebooksModel.findAll();
+        const tvs = await TVsModel.findAll();
+
+        return {phones, notebook, tvs}
     }
 };

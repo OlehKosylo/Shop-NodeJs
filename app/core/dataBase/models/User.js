@@ -1,8 +1,8 @@
-const {modelNames: {USER}} = require('../../constants');
+const {dataBaseWords: {USER_ID, ID}, modelNames: {USER}} = require('../../constants');
 
 module.exports = (sequelize, DataTypes) => {
 
-    return sequelize.define(USER, {
+    const User = sequelize.define(USER, {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
@@ -39,6 +39,11 @@ module.exports = (sequelize, DataTypes) => {
             user_status: {
                 type: DataTypes.STRING,
                 allowNull: false
+            },
+
+            changePasswordField: {
+                type: DataTypes.STRING,
+                allowNull: true
             }
 
         },
@@ -46,4 +51,12 @@ module.exports = (sequelize, DataTypes) => {
             tableName: USER,
             timestamps: false
         });
+
+    User.associate = models => {
+        User.hasMany(models.ActionTokens, {
+         onDelete: "cascade",
+     });
+   };
+
+    return User;
 };

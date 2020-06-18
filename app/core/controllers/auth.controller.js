@@ -15,8 +15,6 @@ module.exports = {
         try {
             let user = req.body;
 
-            console.log(user);
-
             user.password = await hashPassword(user.password);
 
             let token = await uuidToken();
@@ -49,11 +47,11 @@ module.exports = {
 
     login: async (req, res, next) => {
         try {
+            const userId =  req.user.id;
             const jwtTokens = jwtTokenGenerator();
-            await authService.createTokenPair({...jwtTokens, userId: req.user.id});
+            await authService.createTokenPair({...jwtTokens,userId});
 
-            console.log(jwtTokens);
-            res.json(jwtTokens);
+            res.json({...jwtTokens, userId});
         } catch (e) {
             next(e)
         }

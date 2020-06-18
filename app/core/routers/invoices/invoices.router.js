@@ -13,4 +13,6 @@ invoicesRouter.get('/all', invoicesController.getAllOrders);
 invoicesRouter.post('/purchase', isInvoiceValid, invoicesController.makePurchase);
 invoicesRouter.post('/sendGood', isOrder, invoicesController.updateSendStatus);
 
+invoicesRouter.get('/allGoods', invoicesController.getAllGoods);
+
 module.exports = invoicesRouter;

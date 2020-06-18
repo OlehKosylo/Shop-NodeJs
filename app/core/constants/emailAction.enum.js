@@ -1,4 +1,5 @@
 module.exports = {
     ACTIVATE_USER_ACCOUNT: 0,
     RECOVER_USER_PASSWORD: 1,
+    CHANGE_USER_PASSWORD: 2,
 };

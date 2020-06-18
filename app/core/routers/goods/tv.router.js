@@ -11,7 +11,7 @@ const {
 
 const TVRouter = Router();
 
-TVRouter.get('/', checkAccessToken, commonController.getAllGoods);
+TVRouter.get('/', commonController.getAllGoods);
 TVRouter.post('/', isTVModelValid, isTitleExist, TVController.createTVModel);
 TVRouter.delete('/', idModelExist, TVController.deleteTVModel);
 TVRouter.put('/', isTVModelValid, idModelExist, TVController.updateTVModel);

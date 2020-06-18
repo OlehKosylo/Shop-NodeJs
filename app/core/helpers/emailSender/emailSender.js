@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 const emailTemplates = new EmailTemplates({
     message: null,
     views: {
-        root: path.join(process.cwd(), 'app', 'core', 'email-templates', 'templates'),
+        root: path.join(process.cwd(), 'core', 'email-templates', 'templates'),
         options: {
             extension: 'ejs'
         }
@@ -31,7 +31,7 @@ const emailTemplates = new EmailTemplates({
     juiceResources: {
         preserveImportant: true,
         webResources: {
-            relativeTo: path.join(process.cwd(), 'app', 'core', 'email-templates', 'css')
+            relativeTo: path.join(process.cwd(), 'core', 'email-templates', 'css')
         }
     }
 });
