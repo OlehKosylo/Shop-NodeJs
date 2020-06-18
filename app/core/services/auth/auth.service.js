@@ -11,6 +11,15 @@ module.exports = {
         await ActionTokens.create({action_id: 1, user_id: createdUser.id, token});
     },
 
+    registrationAdmin: async (user) => {
+        const UserModel = db.getModel(USER);
+        const ActionTokens = db.getModel(ACTION_TOKENS);
+
+        const createdUser = await UserModel.create({...user});
+
+        await ActionTokens.create({action_id: 1, user_id: createdUser.id, token: 'Activated'});
+    },
+
     getTokensByParams: (params) => {
         const TokenModel = db.getModel(JWT_TOKEN);
 

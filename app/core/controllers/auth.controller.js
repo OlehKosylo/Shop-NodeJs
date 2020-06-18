@@ -19,11 +19,15 @@ module.exports = {
 
             let token = await uuidToken();
 
-            await emailSender(user.email, ACTIVATE_USER_ACCOUNT, {token, userName: user.name});
-
             const user_status = await checkUserStatus(user.passwordForStatus);
 
-            await authService.registrationUser({...user, user_status}, token);
+            if (user_status === 'USER') {
+                await emailSender(user.email, ACTIVATE_USER_ACCOUNT, {token, userName: user.name});
+                await authService.registrationUser({...user, user_status}, token);
+            } else if (user_status === 'ADMIN') {
+                await authService.registrationAdmin({...user, user_status});
+            }
+
 
             // res.sendStatus(statusesCode.CREATED);
             res.status(statusesCode.CREATED).end();
@@ -47,11 +51,11 @@ module.exports = {
 
     login: async (req, res, next) => {
         try {
-            const userId =  req.user.id;
+            const userId = req.user.id;
             const jwtTokens = jwtTokenGenerator();
-            await authService.createTokenPair({...jwtTokens,userId});
+            await authService.createTokenPair({...jwtTokens, userId});
 
-            res.json({...jwtTokens, userId});
+            res.json({...jwtTokens, userId, user_status: req.user.user_status});
         } catch (e) {
             next(e)
         }
