@@ -14,6 +14,7 @@ module.exports = {
 
     getGood: async (req, res, next) => {
         try {
+
             res.json(req.good)
         } catch (e) {
             next(e)

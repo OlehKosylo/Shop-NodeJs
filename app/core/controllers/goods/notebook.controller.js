@@ -6,9 +6,9 @@ module.exports = {
         try {
             let notebookModel = req.body;
 
-            await notebookService.setNotebookModel(notebookModel);
+            const notebook = await notebookService.setNotebookModel(notebookModel);
 
-            res.sendStatus(statusesCode.OK);
+            res.json(notebook.dataValues.id)
         } catch (e) {
             next(e);
         }
@@ -16,11 +16,11 @@ module.exports = {
 
     deleteNotebookModel: async (req, res, next) => {
         try {
-            let {id} = req.id;
+            let id = req.good.id;
 
             await notebookService.deleteNotebookModel(id);
 
-            res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e);
         }
@@ -32,7 +32,7 @@ module.exports = {
 
             await notebookService.updateNotebookModel(Notebook);
 
-            res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e)
         }

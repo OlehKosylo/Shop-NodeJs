@@ -12,13 +12,14 @@ const {notebookController, commonController} = require('../../controllers');
 
 const notebookRouter = Router();
 
-notebookRouter.get('/',commonController.getAllGoods);
+notebookRouter.get('/', commonController.getAllGoods);
 notebookRouter.post('/', isNotebookModelValid, isTitleExist, notebookController.createNotebookModel);
-notebookRouter.delete('/', idModelExist, notebookController.deleteNotebookModel);
 notebookRouter.put('/', isNotebookModelValid, idModelExist, notebookController.updateNotebookModel);
+
+notebookRouter.get('/:id', idModelExist, commonController.getGood);
+notebookRouter.delete('/:id', idModelExist, notebookController.deleteNotebookModel);
 
 notebookRouter.get('/sort/:type', commonController.getAllGoodsBySort);
 
-notebookRouter.get('/:id', idModelExist, commonController.getGood);
 
 module.exports = notebookRouter;

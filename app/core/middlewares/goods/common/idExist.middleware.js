@@ -31,7 +31,7 @@ module.exports = async (req, res, next) => {
         return next(new ErrorHandler(GOOD_NOT_FOUND.message, BAD_REQUEST, GOOD_NOT_FOUND.code))
     }
 
-    req.good = good;
+    req.good = good.dataValues;
 
     next();
 };

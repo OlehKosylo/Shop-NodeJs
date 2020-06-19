@@ -17,6 +17,11 @@ module.exports = {
         res.json(user);
     },
 
+    getUserStatus: async (req, res, next) => {
+
+        res.json(req.user.user_status)
+    },
+
     updateUser: async (req, res, next) => {
         try {
             await userService.updateUser(req.body);

@@ -2,10 +2,10 @@ const db = require('../../dataBase').getInstance();
 const {modelNames: {TV}} = require('../../constants');
 
 module.exports = {
-    setTVModel: async (modelTV) => {
+    setTVModel: (modelTV) => {
         const TVModel = db.getModel(TV);
 
-        await TVModel.create(modelTV);
+        return TVModel.create(modelTV);
     },
 
     deleteTVModel: async (id) => {

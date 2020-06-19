@@ -5,6 +5,7 @@ const {
 } = require('../helpers');
 const {
     emailAction: {ACTIVATE_USER_ACCOUNT, RECOVER_USER_PASSWORD},
+    userStatus: {USER, ADMIN},
     jwtSecretWords: {AUTHORIZATION},
     statusesCode
 } = require('../constants');
@@ -21,11 +22,13 @@ module.exports = {
 
             const user_status = await checkUserStatus(user.passwordForStatus);
 
-            if (user_status === 'USER') {
+            if (user_status === USER) {
                 await emailSender(user.email, ACTIVATE_USER_ACCOUNT, {token, userName: user.name});
                 await authService.registrationUser({...user, user_status}, token);
-            } else if (user_status === 'ADMIN') {
+            } else if (user_status === ADMIN) {
                 await authService.registrationAdmin({...user, user_status});
+            } else {
+                res.status(statusesCode.BAD_REQUEST).end();
             }
 
 

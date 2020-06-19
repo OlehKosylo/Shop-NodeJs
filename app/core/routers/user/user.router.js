@@ -16,5 +16,6 @@ userRouter.get('/', isUserIdExist, userController.getUser);
 userRouter.put('/', isUserModelValid, isUserIdExist, userController.updateUser);
 userRouter.get('/password', isActionTokenExist,  userController.setChangedPassword);
 userRouter.put('/password', isUserRecoverPasswordModelValid, isUserIdExist, checkPasswordMiddleware, userController.changePassword);
+userRouter.get('/status', isUserIdExist, userController.getUserStatus);
 
 module.exports = userRouter;

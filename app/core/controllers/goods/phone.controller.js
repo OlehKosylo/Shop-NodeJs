@@ -6,9 +6,9 @@ module.exports = {
         try {
             let phoneModel = req.body;
 
-            await phonesService.setModelPhone(phoneModel);
+            const phone = await phonesService.setModelPhone(phoneModel);
 
-            res.sendStatus(statusesCode.OK);
+            res.json(phone.dataValues.id)
         } catch (e) {
             next(e);
         }
@@ -16,11 +16,11 @@ module.exports = {
 
     deletePhoneModel: async (req, res, next) => {
         try {
-            let {id} = req.body;
+            let id = req.good.id;
 
             await phonesService.deleteModelPhone(id);
 
-            res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e);
         }
@@ -30,9 +30,11 @@ module.exports = {
         try {
             let PhoneModel = req.body;
 
+            console.log(req.body);
+
             await phonesService.updatePhoneModel(PhoneModel);
 
-            res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e)
         }

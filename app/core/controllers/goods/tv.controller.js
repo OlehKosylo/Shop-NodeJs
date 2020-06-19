@@ -6,9 +6,9 @@ module.exports = {
         try {
             let TVModel = req.body;
 
-            await TVService.setTVModel(TVModel);
+            const tv = await TVService.setTVModel(TVModel);
 
-            res.sendStatus(statusesCode.OK);
+            res.json(tv.dataValues.id)
         } catch (e) {
             next(e);
         }
@@ -16,11 +16,11 @@ module.exports = {
 
     deleteTVModel: async (req, res, next) => {
         try {
-            let {id} = req.body;
+            let id = req.good.id;
 
             await TVService.deleteTVModel(id);
 
-            res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e);
         }
@@ -32,7 +32,7 @@ module.exports = {
 
             await TVService.updateTVModel(TVModel);
 
-            res.sendStatus(statusesCode.OK);
+            res.status(statusesCode.OK).end();
         } catch (e) {
             next(e)
         }

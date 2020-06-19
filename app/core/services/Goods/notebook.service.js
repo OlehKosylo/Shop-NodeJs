@@ -2,10 +2,10 @@ const db = require('../../dataBase').getInstance();
 const {modelNames: {NOTEBOOKS}} = require('../../constants');
 
 module.exports = {
-    setNotebookModel: async (notebookModel) => {
+    setNotebookModel: (notebookModel) => {
         const NotebookModel = db.getModel(NOTEBOOKS);
 
-        await NotebookModel.create(notebookModel);
+        return NotebookModel.create(notebookModel);
     },
 
     deleteNotebookModel: async (id) => {
