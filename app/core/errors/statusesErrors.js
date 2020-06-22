@@ -10,7 +10,8 @@ const {
         NOT_TITLE,
         WRONG_STRIPE_REQUEST,
         ORDER_NOT_FOUND,
-        GOOD_NOT_FOUND
+        GOOD_NOT_FOUND,
+        BAD_REQUEST,
     }
 } = require('../constants');
 
@@ -18,6 +19,11 @@ module.exports = {
     // BAD REQUEST
     EMAIL_ALREADY_EXIST: {
         message: EMAIL_ALREADY_EXIST,
+        code: 4002
+    },
+
+    REQUEST_IS_EMPTY: {
+        message: BAD_REQUEST,
         code: 4002
     },
 
@@ -43,7 +49,7 @@ module.exports = {
 
     WRONG_STRIPE_REQUEST: {
         message: WRONG_STRIPE_REQUEST,
-        code:4002
+        code: 4002
     },
 
     // UNAUTHORIZED

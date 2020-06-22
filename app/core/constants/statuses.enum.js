@@ -3,13 +3,13 @@ module.exports = {
     RECOVERED: 'Recovered',
 
     EMAIL_ALREADY_EXIST: 'Email already exist',
-    WRONG_EMAIL:'Wrong email',
+    WRONG_EMAIL: 'Wrong email',
 
-    NOT_VALID_TOKEN: 'Not valid token', 
+    NOT_VALID_TOKEN: 'Not valid token',
     NOT_TOKEN: 'Not token',
 
     USER_NOT_FOUND: 'User not found',
-    WRONG_ID:'Wrong ID',
+    WRONG_ID: 'Wrong ID',
 
     ORDER_NOT_FOUND: 'Order not found',
 
@@ -22,7 +22,6 @@ module.exports = {
 
     WRONG_STRIPE_REQUEST: 'Wrong stripe request',
 
-
-
+    BAD_REQUEST: 'Bad request'
 };
 

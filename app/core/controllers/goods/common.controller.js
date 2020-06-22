@@ -26,13 +26,13 @@ module.exports = {
             let allGoods;
 
             switch (req.params.type) {
-                case ASC.toLocaleLowerCase():
+                case ASC:
                     allGoods = await commonService.getGoodsBySortASC(req.query.type_of_goods);
                     break;
-                case DESC.toLocaleLowerCase():
+                case DESC:
                     allGoods = await commonService.getGoodsBySortDESC(req.query.type_of_goods);
                     break;
-                case PRICE.toLocaleLowerCase():
+                case PRICE:
                     allGoods = await commonService.getGoodsByPrice(req.query.type_of_goods, +req.query.price);
                     break;
             }

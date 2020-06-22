@@ -8,6 +8,13 @@ module.exports = {
         await InvoiceModel.create({...invoice, sending_status: 0})
     },
 
+    setInvoiceOfBasket: async (invoice) => {
+        const InvoiceModel = db.getModel(INVOICES);
+
+
+        await InvoiceModel.bulkCreate(invoice)
+    },
+
     getCompletedOrders: () => {
         const InvoiceModel = db.getModel(INVOICES);
 
@@ -16,7 +23,7 @@ module.exports = {
         })
     },
 
-    getDoneOrders: () => {
+    getDoesntDoneOrders: () => {
         const InvoiceModel = db.getModel(INVOICES);
 
         return InvoiceModel.findAll({
